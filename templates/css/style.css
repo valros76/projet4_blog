@@ -76,6 +76,22 @@ body{
     background:linear-gradient(to right, rgb(220,220,220), rgb(190,190,190) 25%);
 }
 
+#comments{
+    display:block;
+    width:100%;
+    position:relative;
+    margin:auto;
+    margin-bottom:150px;
+}
+
+#blocComments{
+    width:80%;
+    height:auto;
+    margin:auto;
+    background-color:rgba(255,255,255,0.9);
+}
+
+
 #footHome{
     width:100%;
     height:50px;
