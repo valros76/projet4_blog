@@ -1,5 +1,6 @@
 <?php
     $title="Acceuil";
+    $locateCss="templates/css/style.css";
 ?>
 
 <?php ob_start();
