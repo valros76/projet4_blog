@@ -21,6 +21,10 @@
             <?= $comments; ?>
         </section>
 
+        <section id="postComment">
+            <?= $postComment; ?>
+        </section>
+
         <footer id="footHome">
             <?= $footer; ?>
         </footer>

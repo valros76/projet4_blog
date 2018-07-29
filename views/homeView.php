@@ -42,13 +42,7 @@ $content = ob_get_clean();?>
             <div id="showComments">';
             $bdd = new PDO('mysql:host=localhost;dbname=blog_ecrivain;charset=utf8', 'root', '');
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            $testComment = new Comment([
-                'post_id' => 1,
-                'author' => 'ValTest',
-                'comment' => 'Test de commentaire'
-            ]);
-            $manager = new CommentsManager($bdd);
-            $manager->add($testComment);
+            
             
             $lastComments = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT 0,5');
             while($donnees = $lastComments->fetch()){
@@ -58,6 +52,20 @@ $content = ob_get_clean();?>
             </div>
         </fieldset>';
 $comments = ob_get_clean();?>
+
+<?php ob_start();
+    echo '
+        <form method="post">
+            <fieldset>
+            <legend>Poster un commentaire</legend>
+                <label for="author">Pseudo</label><input type="text" name="author"/><br/><br/>
+                <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>
+                <p id="textareaHint">Vous pouvez agrandir la boite de message.</p><br/>
+                <input type="submit" value="Poster un commentaire" name="creer"/>
+            </fieldset>
+        </form>
+    ';
+$postComment = ob_get_clean();?>
 
 <?php ob_start();
     echo '

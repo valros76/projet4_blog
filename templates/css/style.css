@@ -81,7 +81,7 @@ body{
     width:100%;
     position:relative;
     margin:auto;
-    margin-bottom:150px;
+    margin-bottom:50px;
 }
 
 #blocComments{
@@ -91,6 +91,19 @@ body{
     background-color:rgba(255,255,255,0.9);
 }
 
+#postComment{
+    width:50%;
+    margin:auto;
+    margin-bottom:150px;
+}
+
+#postComment label{
+    display:block;
+}
+
+#textareaHint{
+    color:rgba(0,0,0,0.6);
+}
 
 #footHome{
     width:100%;

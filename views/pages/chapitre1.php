@@ -41,13 +41,19 @@ $content = ob_get_clean();?>
 
 <?php ob_start();
     echo '
-        <fieldset>
+        <fieldset id="blocComments">
             <legend>Commentaires</legend>
-            <div id="showComments">
-                
+            <div id="showComments">';
+            $bdd = new PDO('mysql:host=localhost;dbname=blog_ecrivain;charset=utf8', 'root', '');
+            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            
+            $lastComments = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT 0,5');
+            while($donnees = $lastComments->fetch()){
+                echo '<hr/><p>  <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/> ' . htmlspecialchars($donnees['comment']) . '<hr width=20/><p class="dateComment">' . $donnees['date_comment'] . '</p></p>';
+            }
+    echo '
             </div>
-        </fieldset>
-    ';
+        </fieldset>';
 $comments = ob_get_clean();?>
 
 <?php ob_start();
