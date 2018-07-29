@@ -21,15 +21,17 @@ $header = ob_get_clean();?>
                 Bienvenue sur mon blog
                 <br/>
             </h3>
-            <p>
-                Je me nomme Jean Forteroche, je suis acteur et écrivain.
-                <br/>
-                J\'ai créé ce blog pour écrire mon prochain roman qui se nommera "Billet simple pour l\'Alaska".
-                <br/>
-                Ce blog fera office de "livre virtuel", j\'écrirais mon livre chapitre par chapitre et rendrais le contenu accessible ici.
-                <br/>
-                Je vous souhaite une bonne visite et une bonne lecture.
-            </p>
+            <div class="texteDescription">
+                <p>
+                    Je me nomme Jean Forteroche, je suis acteur et écrivain.
+                    <br/>
+                    J\'ai créé ce blog pour écrire mon prochain roman qui se nommera "Billet simple pour l\'Alaska".
+                    <br/>
+                    Ce blog fera office de "livre virtuel", j\'écrirais mon livre chapitre par chapitre et rendrais le contenu accessible ici.
+                    <br/>
+                    Je vous souhaite une bonne visite et une bonne lecture.
+                </p>
+            </div>
         </article>';
 $content = ob_get_clean();?>
 <?php require('templates/home.php'); ?>
