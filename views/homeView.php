@@ -39,11 +39,18 @@ $content = ob_get_clean();?>
     echo '
         <fieldset>
             <legend>Commentaires</legend>
-            <div id="showComments">
-                
+            <div id="showComments">';
+            $testComment = new Comment([
+                'post_id' => 1,
+                'author' => 'ValTest',
+                'comment' => 'Test de commentaire'
+            ]);
+            $manager = new CommentsManager($bdd);
+            $manager->add($testComment);
+
+    echo '
             </div>
-        </fieldset>
-    ';
+        </fieldset>';
 $comments = ob_get_clean();?>
 
 <?php ob_start();
