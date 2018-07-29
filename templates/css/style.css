@@ -42,6 +42,7 @@ body{
     margin:0 auto;
     background-color:rgb(150,150,150);
     height:40px;
+    border-radius:7.5%;
 }
 
 #headHome fieldset legend{
