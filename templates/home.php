@@ -16,6 +16,10 @@
         <section id="contentHome">
             <?= $content; ?>
         </section>
+
+        <footer id="footHome">
+            <?= $footer; ?>
+        </footer>
     </div>
 </body>
 </html>
