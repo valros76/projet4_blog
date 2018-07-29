@@ -1,5 +1,5 @@
 <?php
-class GetComments{
+class Comment extends CommentsManager{
 
     protected $_id;
     protected $_post_id;
