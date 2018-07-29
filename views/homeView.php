@@ -33,4 +33,16 @@ $header = ob_get_clean();?>
             </div>
         </article>';
 $content = ob_get_clean();?>
+
+<?php ob_start();
+    echo '
+        <fieldset>
+            <legend>Pages</legend>
+            <ul>
+                <li><a href="">Chapitre 1</a></li>
+            </ul>
+        </fieldset>
+    ';
+$footer = ob_get_clean();?>
+
 <?php require('templates/home.php'); ?>
