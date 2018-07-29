@@ -38,6 +38,17 @@ $content = ob_get_clean();?>
 <?php ob_start();
     echo '
         <fieldset>
+            <legend>Commentaires</legend>
+            <div id="showComments">
+                
+            </div>
+        </fieldset>
+    ';
+$comments = ob_get_clean();?>
+
+<?php ob_start();
+    echo '
+        <fieldset>
             <legend>Pages</legend>
             <ul>
                 <li><a href="views/pages/chapitre1.php">Chapitre 1</a></li>
