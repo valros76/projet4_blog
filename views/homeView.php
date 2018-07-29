@@ -3,14 +3,25 @@
 ?>
 
 <?php ob_start();
-    echo '<h1>Acceuil</h1>';
+    echo '
+            <h1>Acceuil</h1>
+            <fieldset>
+                <legend>Menu</legend>
+                    <ul id="navHome">
+                        <li><a href="">Acceuil</a></li>
+                        <li><a href="">Contact</a></li>
+                    </ul>
+            </fieldset>
+        ';
 $header = ob_get_clean();?>
 
 <?php ob_start();
     echo '<article>
-            <p>
-                Bienvenue sur mon blog.
+            <h3>
+                Bienvenue sur mon blog
                 <br/>
+            </h3>
+            <p>
                 Je me nomme Jean Forteroche, je suis acteur et écrivain.
                 <br/>
                 J\'ai créé ce blog pour écrire mon prochain roman qui se nommera "Billet simple pour l\'Alaska".
