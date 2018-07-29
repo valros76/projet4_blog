@@ -17,6 +17,10 @@
             <?= $content; ?>
         </section>
 
+        <section id="comments">
+            <?= $comments; ?>
+        </section>
+
         <footer id="footHome">
             <?= $footer; ?>
         </footer>
