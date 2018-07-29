@@ -1,8 +1,9 @@
 body{
     text-align:center;
     word-wrap:break-word;
-    background-color:rgb(200,200,200);
-    
+    background-image:url('https://st2.depositphotos.com/4483513/11014/i/950/depositphotos_110143780-stock-photo-light-brown-mulberry-paper-texture.jpg');
+    background-repeat:repeat;
+    background-color:rgba(180,180,180,0.6);
 }
 
 #containerHome{
@@ -16,7 +17,6 @@ body{
     top:0;
     left:0;
     padding:0;
-    background-color:rgb(200,200,200);
 }
 
 #headHome{
@@ -24,7 +24,8 @@ body{
     line-height:20px;
     display:block;
     position:relative;
-    background-color:rgb(180,180,180);
+    background-color:rgba(65,65,65,0.8);
+    color:rgba(255,255,255,0.6);
     margin:0 auto;
     padding-top:5px;
     padding-bottom:5px;
@@ -35,16 +36,18 @@ body{
     width:40%;
     margin:0 auto;
     background-color:rgb(150,150,150);
+    height:40px;
 }
 
 #headHome fieldset legend{
     color:rgb(255,255,255);
-    border-right:1px solid black;
-    border-left:1px solid black;
+    border-right:1px solid rgba(255,255,255,0.8);
+    border-left:1px solid rgba(255,255,255,0.8);
     border-radius:50%;
-    background-color:rgb(0,0,255);
+    background-color:rgba(170,170,190,0.8);
     padding-right:5px;
     padding-left:5px;
+    font-weight:bold;
 }
 
 #headHome ul{
@@ -54,10 +57,11 @@ body{
     align-items:center;
     list-style:none;
     padding-left:0;
+    margin:auto;
 }
 
 #headHome li a{
-    color:rgb(15, 71, 10);
+    color:rgba(255,255,255,0.6);
     text-decoration:none;
     text-transform:uppercase;
 }
@@ -67,9 +71,17 @@ body{
 }
 
 #contentHome{
-    width:70%;
+    width:50%;
     margin:20px auto;
-    background:linear-gradient(to right, rgb(190,190,190), rgb(170,170,170) 25%);
+    background:linear-gradient(to right, rgb(220,220,220), rgb(190,190,190) 25%);
+}
+
+.texteDescription{
+    width:50%;
+    margin:30px auto;
+    background-color:rgba(220,220,220,0.6);
+    border: 2px solid rgb(240,240,240);
+    padding:10px;
 }
 
 h1,
@@ -79,4 +91,5 @@ h4,
 h5,
 h6{
     text-decoration:underline;
+    letter-spacing:1.2px;
 }

@@ -19,16 +19,15 @@ $header = ob_get_clean();?>
     echo '<article>
             <h3>
                 Bienvenue sur mon blog
-                <br/>
             </h3>
             <div class="texteDescription">
                 <p>
                     Je me nomme Jean Forteroche, je suis acteur et écrivain.
-                    <br/>
+                    <br/><br/>
                     J\'ai créé ce blog pour écrire mon prochain roman qui se nommera "Billet simple pour l\'Alaska".
-                    <br/>
+                    <br/><br/>
                     Ce blog fera office de "livre virtuel", j\'écrirais mon livre chapitre par chapitre et rendrais le contenu accessible ici.
-                    <br/>
+                    <br/><br/>
                     Je vous souhaite une bonne visite et une bonne lecture.
                 </p>
             </div>
