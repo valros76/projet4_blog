@@ -12,7 +12,7 @@ class CommentsManager{
         //Assignation des valeurs
         $req->bindValue(':post_id', $comment->postId());
         $req->bindValue(':author', $comment->author());
-        $req->bindValue(':comment', $perso->comment());
+        $req->bindValue(':comment', $comment->comment());
         //Execution de la requête
         $req->execute();
 
@@ -31,6 +31,20 @@ class CommentsManager{
         $this->_bdd->exec('DELETE FROM comments WHERE id = '.$comment->id());
     }
 
+    public function exists($info)
+    {
+        if (is_int($info)){
+        return (bool) $this->_bdd->query('SELECT COUNT(*) FROM comments WHERE id = '.$info)->fetchColumn();
+        }
+        
+        // Sinon, c'est qu'on veut vérifier que le nom existe ou pas.
+        
+        $req = $this->_bdd->prepare('SELECT COUNT(*) FROM comments WHERE author = :author');
+        $req->execute([':author' => $info]);
+        
+        return (bool) $req->fetchColumn();
+    }
+
     public function get($info){
         if (is_int($info)){
             $req = $this->_bdd->query('SELECT id,post_id,author,comment,date_comment FROM comments WHERE id = '.$info);
@@ -46,11 +60,11 @@ class CommentsManager{
         }
     }
 
-    public function getList(){
+    public function getList($author){
         $comments = [];
     
         $req = $this->_bdd->prepare('SELECT id,author,comment FROM comments WHERE author <> :author ORDER BY author');
-        $req->execute([':author' => $nom]);
+        $req->execute([':author' => $author]);
         
         while ($donnees = $req->fetch(PDO::FETCH_ASSOC))        {
         $persos[] = new Comment($donnees);

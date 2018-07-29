@@ -40,6 +40,8 @@ $content = ob_get_clean();?>
         <fieldset>
             <legend>Commentaires</legend>
             <div id="showComments">';
+            $bdd = new PDO('mysql:host=localhost;dbname=blog_ecrivain;charset=utf8', 'root', '');
+            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             $testComment = new Comment([
                 'post_id' => 1,
                 'author' => 'ValTest',
@@ -47,6 +49,8 @@ $content = ob_get_clean();?>
             ]);
             $manager = new CommentsManager($bdd);
             $manager->add($testComment);
+            
+            $manager->getList('valTest');
 
     echo '
             </div>
