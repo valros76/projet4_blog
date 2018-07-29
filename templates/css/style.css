@@ -31,6 +31,11 @@ body{
     padding-bottom:5px;
 }
 
+#headHome h1{
+    font-family:'Arial', sans-serif;
+    font-weight:lighter;
+}
+
 #headHome fieldset{
     display:inline-block;
     width:40%;
@@ -169,6 +174,5 @@ h3,
 h4,
 h5,
 h6{
-    text-decoration:underline;
     letter-spacing:1.2px;
 }
