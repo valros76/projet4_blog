@@ -1,15 +1,3 @@
-<?php
-
-?><?php
-function loadClass($class){
-    require '../../models/classes/'.$class.'.php';
-}
-
-spl_autoload_register('loadClass');
-require('../../models/bdd.php');
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
-?>
 
 <?php
 $title="Connexion à l'espace membre";
