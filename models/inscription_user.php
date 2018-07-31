@@ -7,7 +7,7 @@ spl_autoload_register('loadClass');
 require('bdd.php');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
-$manager = new UsersManager($bdd);
+
 
 if(isset($_POST['inscription']) && isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['confirmMdp']) && isset($_POST['email'])){
     
@@ -19,6 +19,8 @@ if(isset($_POST['inscription']) && isset($_POST['pseudo']) && isset($_POST['pass
             'password' => $pass_hash,
             'email' => $_POST['email']
         ]);
+
+        $manager = new UsersManager($bdd);
 
         if(!$user->nomValide()){
             echo 'Le nom choisi est invalide.';
@@ -38,10 +40,6 @@ if(isset($_POST['inscription']) && isset($_POST['pseudo']) && isset($_POST['pass
         }
         else{
             $manager->add($user);
-            $_POST['pseudo'] = '';
-            $_POST['password'] = '';
-            $_POST['confirmPassword'] = '';
-            $_POST['email'] = '';
         }
     }
     else{

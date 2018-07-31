@@ -1,5 +1,5 @@
 <?php
-class User{
+class User extends UsersManager{
 
     protected $_id;
     protected $_pseudo;

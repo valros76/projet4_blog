@@ -6,9 +6,9 @@ class UsersManager{
     public function add(User $user){
         $req = $this->_bdd->prepare('INSERT INTO users(pseudo,password,email,inscription_date) VALUES(:pseudo,:password:email,CURDATE())');
     
-        $req->bindValue(':pseudo' => $user->pseudo());
-        $req->bindValue(':password' => $user->password());
-        $req->bindValue(':email' => $user->email());
+        $req->bindValue(':pseudo', $user->pseudo());
+        $req->bindValue(':password', $user->password());
+        $req->bindValue(':email', $user->email());
 
         $req->execute();
 
