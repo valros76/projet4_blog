@@ -46,7 +46,7 @@
                 <legend>Menu</legend>
                     <ul id="navHome">
                         <li><a href="../../index.php">Acceuil</a></li>
-                        <li><a href="">Contact</a></li>
+                        <li><a href="connexion.php">Se connecter</a></li>
                     </ul>
             </fieldset>
         ';
