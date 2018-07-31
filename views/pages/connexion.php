@@ -1,15 +1,5 @@
 <?php
-    function loadClass($class){
-        require '../../models/classes/'.$class.'.php';
-    }
-    
-    spl_autoload_register('loadClass');
-    require('../../models/bdd.php');
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
-
-    
-   
+    session_start();
 ?>
 
 <?php
@@ -31,7 +21,7 @@
 $header = ob_get_clean();?>
 
 <?php ob_start();
-    echo '<form method="post">
+    echo '<form action="../../models/connexion_user.php" method="post">
             <fieldset>
                 <legend>Connexion</legend>
                 <label for="pseudo">Pseudo</label><input type="text" name="pseudo"/><br/>
