@@ -66,6 +66,10 @@ body{
     margin:auto;
 }
 
+#headHome li{
+    width:30%;
+}
+
 #headHome li a{
     color:rgba(255,255,255,0.6);
     text-decoration:none;
