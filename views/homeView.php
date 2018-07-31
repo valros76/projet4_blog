@@ -1,4 +1,18 @@
 <?php
+    $bdd = new PDO('mysql:host=localhost;dbname=blog_ecrivain;charset=utf8', 'root', '');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+    $manager = new CommentsManager($bdd);
+    if(isset($_POST['creer']) && isset($_POST['author']) && isset($_POST['comment'])){
+        $comment = new Comment([
+            'author' => $_POST['author'],
+            'comment' => $_POST['comment']
+        ]);
+        $manager->add($comment);
+    }
+?>
+
+<?php
     $title="Acceuil";
     $locateCss="templates/css/style.css";
 ?>

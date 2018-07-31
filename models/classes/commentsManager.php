@@ -45,6 +45,19 @@ class CommentsManager{
         return (bool) $req->fetchColumn();
     }
 
+    public function exists_comment($info){
+        if(is_int($infos)){
+            return (bool) $this->_bdd->query('SELECT COUNT(*) FROM comments WHERE id ='.$infos)->fetchColumn();
+        }
+
+        //Sinon, c'est qu'on veut vérifier si le commentaire existe
+
+        $req = $this->_bdd->prepare('SELECT COUNT(*) FROM comments WHERE comment = :comment');
+        $req->execute([':comment' => $info]);
+
+        return (bool) $req->fetchColumn();
+    }
+
     public function get($info){
         if (is_int($info)){
             $req = $this->_bdd->query('SELECT id,post_id,author,comment,date_comment FROM comments WHERE id = '.$info);
