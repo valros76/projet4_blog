@@ -80,7 +80,7 @@ class CommentsManager{
         $req->execute([':author' => $author]);
         
         while ($donnees = $req->fetch(PDO::FETCH_ASSOC))        {
-        $persos[] = new Comment($donnees);
+        $comments[] = new Comment($donnees);
         }
         
         return $comments;
