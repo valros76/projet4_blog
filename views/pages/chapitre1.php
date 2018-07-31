@@ -1,4 +1,40 @@
 <?php
+    function loadClass($class){
+        require '../../models/classes/'.$class.'.php';
+    }
+    
+    spl_autoload_register('loadClass');
+    require('../../models/bdd.php');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+    $manager = new CommentsManager($bdd);
+    if(isset($_POST['creer']) && isset($_POST['author']) && isset($_POST['comment'])){
+        if($_POST['author'] != null && $_POST['comment'] != null){
+            $comment = new Comment([
+                'author' => $_POST['author'],
+                'comment' => $_POST['comment']
+            ]);
+            
+            if($_POST['author'] == null){
+                echo 'Vous n\'avez pas rempli la partie pseudo.';
+                unset($comment);
+            }
+            if($_POST['comment'] == null){
+                echo 'Vous n\'avez pas rempli la partie message.';
+                unset($comment);
+            }
+            if($manager->exists_comment($comment->comment())){
+                echo 'Vous avez déjà posté ce commentaire.';
+                unset($comment);
+            }
+            else{
+                $manager->add($comment);
+            }
+        }
+    }
+?>
+
+<?php
     $title="Acceuil";
     $locateCss="../../templates/css/style.css";
 ?>
@@ -44,7 +80,7 @@ $content = ob_get_clean();?>
         <fieldset id="blocComments">
             <legend>Commentaires</legend>
             <div id="showComments">';
-            $bdd = new PDO('mysql:host=localhost;dbname=blog_ecrivain;charset=utf8', 'root', '');
+            require('../../models/bdd.php');
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
             $lastComments = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT 0,5');
