@@ -1,4 +1,5 @@
 <?php
+    session_start();
     function loadClass($class){
         require '../../models/classes/'.$class.'.php';
     }
@@ -46,7 +47,14 @@
                 <legend>Menu</legend>
                     <ul id="navHome">
                         <li><a href="../../index.php">Acceuil</a></li>
-                        <li><a href="connexion.php">Se connecter</a></li>
+        ';
+        if(isset($_SESSION['pseudo'])){
+            echo   '<li><a href="../../models/deconnexion_user.php">Se deconnecter</a></li>';
+        }   
+        else{             
+            echo   '<li><a href="views/pages/connexion.php">Se connecter</a></li>';
+        }
+        echo        '
                     </ul>
             </fieldset>
         ';
