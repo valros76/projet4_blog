@@ -1,5 +1,11 @@
 <?php
+function loadClass($class){
+    require '../../models/classes/'.$class.'.php';
+}
+
+spl_autoload_register('loadClass');
 require('bdd.php');
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 if(isset($_POST['inscription']) && isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['confirmMdp']) && isset($_POST['email'])){
     

@@ -18,7 +18,7 @@ echo '
 $header = ob_get_clean();?>
 
 <?php ob_start();
-echo '<form method="post">
+echo '<form action="../../models/inscription_user.php" method="post">
         <fieldset>
             <legend>Inscription</legend>
             <label for="pseudo">Pseudo</label><input type="text" name="pseudo"/><br/>
