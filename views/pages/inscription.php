@@ -11,7 +11,7 @@ echo '
             <legend>Menu</legend>
                 <ul id="navHome">
                     <li><a href="../../index.php">Acceuil</a></li>
-                    <li><a href="">Se connecter</a></li>
+                    <li><a href="connexion.php">Se connecter</a></li>
                 </ul>
         </fieldset>
     ';

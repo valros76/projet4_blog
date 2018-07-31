@@ -48,7 +48,7 @@
         }   
         else{             
             echo   '
-                    <li><a href="views/page/inscription.php">S\'inscrire</a></li>
+                    <li><a href="views/pages/inscription.php">S\'inscrire</a></li>
                     <li><a href="views/pages/connexion.php">Se connecter</a></li>
                 ';
         }

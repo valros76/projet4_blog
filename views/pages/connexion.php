@@ -14,7 +14,7 @@
                 <legend>Menu</legend>
                     <ul id="navHome">
                         <li><a href="../../index.php">Acceuil</a></li>
-                        <li><a href="">Se connecter</a></li>
+                        <li><a href="inscription.php">S\'inscrire</a></li>
                     </ul>
             </fieldset>
         ';
