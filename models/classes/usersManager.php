@@ -8,17 +8,17 @@ class UsersManager{
     }
 
     public function add(User $user){
-        $req = $this->_bdd->prepare('INSERT INTO users(pseudo,password,email,inscription_date) VALUES(:pseudo,:password:email,CURDATE())');
+        $req = $this->_bdd->prepare('INSERT INTO users(pseudo,password,email,inscription_date,id_group) VALUES(:pseudo,:password,:email,CURDATE(), :id_group)');
     
         $req->bindValue(':pseudo', $user->pseudo());
         $req->bindValue(':password', $user->password());
         $req->bindValue(':email', $user->email());
+        $req->bindValue(':id_group', $user->id_group(), PDO::PARAM_INT);
 
         $req->execute();
 
         $user->hydrate([
             'id' => $this->_bdd->lastInsertId(),
-            'id_group' => 1
         ]);
     }
 
