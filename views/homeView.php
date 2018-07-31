@@ -41,7 +41,7 @@
                 <legend>Menu</legend>
                     <ul id="navHome">
                         <li><a href="">Acceuil</a></li>
-                        <li><a href="pages/connexion.php">Se connecter</a></li>
+                        <li><a href="views/pages/connexion.php">Se connecter</a></li>
                     </ul>
             </fieldset>
         ';
