@@ -52,7 +52,10 @@
             echo   '<li><a href="../../models/deconnexion_user.php">Se deconnecter</a></li>';
         }   
         else{             
-            echo   '<li><a href="views/pages/connexion.php">Se connecter</a></li>';
+            echo   '
+                    <li><a href="inscription.php">S\'inscrire</a></li>
+                    <li><a href="connexion.php">Se connecter</a></li>
+                ';
         }
         echo        '
                     </ul>
