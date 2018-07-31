@@ -3,6 +3,10 @@ class UsersManager{
 
     private $_bdd;
 
+    public function __construct($bdd){
+        $this->setBdd($bdd);
+    }
+
     public function add(User $user){
         $req = $this->_bdd->prepare('INSERT INTO users(pseudo,password,email,inscription_date) VALUES(:pseudo,:password:email,CURDATE())');
     
@@ -14,6 +18,7 @@ class UsersManager{
 
         $user->hydrate([
             'id' => $this->_bdd->lastInsertId(),
+            'id_group' => 1
         ]);
     }
 

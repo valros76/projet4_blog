@@ -4,14 +4,8 @@ function loadClass($class){
 }
 
 spl_autoload_register('loadClass');
-require('bdd.php');
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
-
-
-if(isset($_POST['inscription']) && isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['confirmMdp']) && isset($_POST['email'])){
-    
-    if($_POST['password'] == $_POST['confirmPassword']){
+    if($_POST['pseudo'] != null && $_POST['password'] != null && $_POST['confirmPassword'] && $_POST['email'] != null){
         $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         $user = new User([
@@ -19,6 +13,9 @@ if(isset($_POST['inscription']) && isset($_POST['pseudo']) && isset($_POST['pass
             'password' => $pass_hash,
             'email' => $_POST['email']
         ]);
+        
+        require('bdd.php');
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
         $manager = new UsersManager($bdd);
 
@@ -26,7 +23,7 @@ if(isset($_POST['inscription']) && isset($_POST['pseudo']) && isset($_POST['pass
             echo 'Le nom choisi est invalide.';
             unset($user);
         }
-        elseif($manager->exists($user->nom())){
+        elseif($manager->exists($user->pseudo())){
             echo 'Ce nom est déjà pris.';
             unset($user);
         }
@@ -43,9 +40,9 @@ if(isset($_POST['inscription']) && isset($_POST['pseudo']) && isset($_POST['pass
         }
     }
     else{
-        echo 'Un champs est mal rempli / les mots de passes ne correspondent pas.';
+        echo 'Un des champs est mal rempli / les mots de passes ne correspondent pas.';
     }
-}
+
 
 header('Location: ../views/pages/connexion.php');
 
