@@ -11,6 +11,8 @@
     $manager = new UsersManager($bdd);
     $profile = $manager->get($_SESSION['pseudo']);
 
+    $groupManager = new GroupsManager($bdd);
+    
     
 ?>
 
@@ -53,7 +55,7 @@ $header = ob_get_clean();?>
             <p><b>Nom</b>  <br/><br/>{', $profile->pseudo() ,'}</p>
             <p><b>Email</b> <br/><br/>{', $profile->email() ,'}</p>
             <p><b>Date d\'inscription</b> <br/><br/>{', $profile->inscription_date() ,'}</p>
-            <p><b>Rang</b> <br/><br/>{', $profile->id_group() ,', ', $profile->id_group() ,'}</p>
+            <p><b>Rang</b> <br/><br/>{', $profile->id_group() ,', ', $group ,'}</p>
         </fieldset>
     </div>
 </article>';

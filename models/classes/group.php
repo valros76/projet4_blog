@@ -18,11 +18,11 @@ class Group{
     }
 
     public function id(){
-        return $this->id();
+        return $this->_id;
     }
 
     public function name(){
-        return $this-name();
+        return $this->_name;
     }
 
     public function setId($id){
