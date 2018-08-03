@@ -57,13 +57,13 @@ class UsersManager{
 
     public function get($info){
         if (is_int($info)){
-            $req = $this->_bdd->query('SELECT id,pseudo,password,email,inscription_date FROM users WHERE id = '.$info);
+            $req = $this->_bdd->query('SELECT id,pseudo,password,email,inscription_date,id_group FROM users WHERE id = '.$info);
             $donnees = $req->fetch(PDO::FETCH_ASSOC);
             
             return new User($donnees);
         }
         else{
-            $req = $this->_bdd->prepare('SELECT id,pseudo,password,email,inscription_date FROM users WHERE pseudo = :pseudo');
+            $req = $this->_bdd->prepare('SELECT id,pseudo,password,email,inscription_date,id_group FROM users WHERE pseudo = :pseudo');
             $req->execute([':pseudo' => $info]);
             
             return new User($req->fetch(PDO::FETCH_ASSOC));
@@ -73,7 +73,7 @@ class UsersManager{
     public function getList($pseudo){
         $users = [];
     
-        $req = $this->_bdd->prepare('SELECT id,pseudo,email FROM users WHERE pseudo <> :pseudo ORDER BY pseudo');
+        $req = $this->_bdd->prepare('SELECT id,pseudo,email,id_group FROM users WHERE pseudo <> :pseudo ORDER BY pseudo');
         $req->execute([':pseudo' => $pseudo]);
         
         while ($donnees = $req->fetch(PDO::FETCH_ASSOC))        {
@@ -84,11 +84,12 @@ class UsersManager{
     }
 
     public function update(User $user){
-        $req = $this->_bdd->prepare('UPDATE users SET pseudo = : pseudo, password = :password, email = :email WHERE id = :id');
+        $req = $this->_bdd->prepare('UPDATE users SET pseudo = : pseudo, password = :password, email = :email, id_group = :id_group WHERE id = :id');
     
         $req->bindValue(':pseudo', $user->pseudo(), PDO::PARAM_INT);
         $req->bindValue(':password', $user->password(), PDO::PARAM_INT);
         $req->bindValue(':email', $user->email(), PDO::PARAM_INT);
+        $req->bindValue(':id_group', $user->id_group(), PDO::PARAM_INT);
         
         $req->execute();
     }

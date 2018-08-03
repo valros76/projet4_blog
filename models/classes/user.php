@@ -6,7 +6,7 @@ class User extends UsersManager{
     protected $_password;
     protected $_email;
     protected $_inscription_date;
-    protected $_id_group;
+    protected $_id_group = 1;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -72,6 +72,7 @@ class User extends UsersManager{
 
     public function setId_group($id_group){
         $id_group = (int) $id_group;
+        $id_group = $this->_id_group;
         if(is_int($id_group)){
             $this->_id_group = $id_group;
         }
