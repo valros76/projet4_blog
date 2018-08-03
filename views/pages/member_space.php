@@ -11,6 +11,7 @@
     $manager = new UsersManager($bdd);
     $profile = $manager->get($_SESSION['pseudo']);
 
+    
 ?>
 
 <?php
@@ -62,19 +63,7 @@ $content = ob_get_clean();?>
 $comments = ob_get_clean();?>
 
 <?php ob_start();
-    echo '
-            <section>
-                <form method="post">
-                    <fieldset>
-                        <legend>Modifier le mot de passe</legend>
-                        <label for="ancientPassword">Ancien mot de de passe</label><input type="password" name="ancientPassword"/><br/><br/>
-                        <label for="newPassword">Nouveau mot de passe</label><input type="password" name="newPassword"/><br/><br/>
-                        <label for="confirmNewPassword">Confirmation <br/>du nouveau mot de passe</label><input type="password" name="confirmNewPassword"/><br/><br/>
-                        <input type="submit" value="Changer le mot de passe" name="updatePassword"/>
-                    </fieldset>
-                </form>
-            </section>
-    ';    
+    
 $postComment = ob_get_clean();?>
 
 <?php ob_start();
