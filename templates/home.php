@@ -10,16 +10,6 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?= $locateCss; ?>"/>
     <title><?= $title; ?></title>
-    <?php
-    if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] != null){
-        $manager = new UsersManager($bdd);
-        $admin = $manager->get($_SESSION['pseudo']);
-            if($admin->id_group() != 3){
-                echo "<script src=\"https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=aodwpl4fidsfjdc4lsy7dwdfx22id12dxjh7t7s5vietisvy\"></script>";
-                echo "<script src=\"js/tinyInit.js\"></script>";
-            }
-    }
-    ?>
 </head>
 <body>
     <div id="containerHome">
@@ -43,5 +33,17 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             <?= $footer; ?>
         </footer>
     </div>
+    <?php
+    if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] != null){
+        $manager = new UsersManager($bdd);
+        $admin = $manager->get($_SESSION['pseudo']);
+            if($admin->id_group() != 3){
+                echo '<script src="js/jquery.min.js"></script>';
+                echo "<script src=\"js/tinymce/tinymce.min.js\"></script>";
+                echo "<script src=\"js/tinyInit.js\"></script>";
+            }
+    }
+    ?>
+    
 </body>
 </html>
