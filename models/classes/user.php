@@ -6,8 +6,8 @@ class User extends UsersManager{
     protected $_password;
     protected $_email;
     protected $_inscription_date;
-    protected $_id_group = 1;
-    protected $_group_name = 'users';
+    protected $_id_group;
+    protected $_group_name;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -43,11 +43,28 @@ class User extends UsersManager{
     }
 
     public function id_group(){
-        return $this->_id_group;
+        if($this->_id_group == null){
+            $this->_id_group = $this->_id_group += 1;
+            return $this->_id_group;
+        }
+        else{
+            return $this->_id_group;
+        }
     }
 
     public function group_name(){
-        return $this->_group_name;
+        if($this->_id_group == 1){
+            $this->_group_name = "users";
+            return $this->_group_name;
+        }
+        if($this->_id_group == 2){
+            $this->_group_name = "moderators";
+            return $this->_group_name;
+        }
+        if($this->_id_group == 3){
+            $this->_group_name = "administrators";
+            return $this->_group_name;
+        }
     }
 
     public function setId($id){
@@ -77,10 +94,10 @@ class User extends UsersManager{
 
     public function setId_group($id_group){
         $id_group = (int) $id_group;
-        $id_group = $this->_id_group;
         if(is_int($id_group)){
             $this->_id_group = $id_group;
         }
+
     }
 
     public function setGroup_name($group_name){
