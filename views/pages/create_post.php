@@ -64,7 +64,7 @@ $header = ob_get_clean();?>
                            <input type="text" name="titre"/>
                            <br/><br/>
                            <label for="contenu">Contenu</label>
-                           <textarea name="contenu" cols="30" rows="20"></textarea>
+                           <textarea id="mytextarea" name="contenu" cols="30" rows="20"></textarea>
                            <br/><br/>
                            <input type="submit" value="Poster" name="posterContenu"/> 
                         </form>
