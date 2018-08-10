@@ -16,19 +16,7 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         $admin = $manager->get($_SESSION['pseudo']);
             if($admin->id_group() != 3){
                 echo "<script src=\"https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=aodwpl4fidsfjdc4lsy7dwdfx22id12dxjh7t7s5vietisvy\"></script>";
-                echo "
-                    <script>
-                        tinymce.init({ 
-                            selector:'#mytextarea'
-                            plugins: [
-                                'advlist autolink lists link image charmap print preview anchor textcolor',
-                                'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table contextmenu paste code help wordcount'
-                              ],
-                              toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
-                        });
-                    </script>
-                    ";
+                echo "<script src=\"js/tinyInit.js\"></script>";
             }
     }
     ?>
