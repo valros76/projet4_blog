@@ -1,6 +1,11 @@
 <?php
     session_start();
-    require('models/bdd.php');
+    function loadClass($class){
+        require '../../models/classes/'.$class.'.php';
+    }
+    
+    spl_autoload_register('loadClass');
+    require('../../models/bdd.php');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
     $hint = "Vous pouvez agrandir la boite de message.";
@@ -36,26 +41,26 @@
 ?>
 
 <?php
-    $title="Acceuil";
-    $locateCss="templates/css/style.css";
+    $title="Modération des commentaires";
+    $locateCss="../../templates/css/style.css";
 ?>
 
 <?php ob_start();
     echo '
-            <h1>Acceuil</h1>
+            <h1>Espace de modération des commentaires</h1>
             <fieldset>
                 <legend>Menu</legend>
                     <ul id="navHome">
-                        <li><a href="">Acceuil</a></li>
+                        <li><a href="../../index.php">Acceuil</a></li>
         ';
         if(isset($_SESSION['pseudo'])){
-            echo    '<li><a href="views/pages/member_space.php">Mon profil</a></li>';
-            echo   '<li><a href="models/deconnexion_user.php">Se deconnecter</a></li>';
+            echo    '<li><a href="member_space.php">Mon profil</a></li>';
+            echo   '<li><a href="../../models/deconnexion_user.php">Se deconnecter</a></li>';
         }   
         else{             
             echo   '
-                    <li><a href="views/pages/inscription.php">S\'inscrire</a></li>
-                    <li><a href="views/pages/connexion.php">Se connecter</a></li>
+                    <li><a href="inscription.php">S\'inscrire</a></li>
+                    <li><a href="connexion.php">Se connecter</a></li>
                 ';
         }
         echo        '
@@ -67,17 +72,16 @@ $header = ob_get_clean();?>
 <?php ob_start();
     echo '<article>
             <h3>
-                Bienvenue sur mon blog
+                Comment modérer les commentaires ?
             </h3>
             <div class="texteDescription">
                 <p>
-                    Je me nomme Jean Forteroche, je suis acteur et écrivain.
+                    Si un commentaire n\'a pas sa place sur le site et qu\'il est remonté par les utilisateurs,
+                    vous pouvez choisir de la supprimer ou de le laisser visible.
                     <br/><br/>
-                    J\'ai créé ce blog pour écrire mon prochain roman qui se nommera "Billet simple pour l\'Alaska".
+                    Pour supprimer un commentaire, appuyez sur le bouton "supprimer".
                     <br/><br/>
-                    Ce blog fera office de "livre virtuel", j\'écrirais mon livre chapitre par chapitre et rendrais le contenu accessible ici.
-                    <br/><br/>
-                    Je vous souhaite une bonne visite et une bonne lecture.
+                    Pour laisser le commentaire visible, appuyez sur le bouton "R.A.S".
                 </p>
             </div>
         </article>';
@@ -88,13 +92,12 @@ $content = ob_get_clean();?>
         <fieldset id="blocComments">
             <legend>Commentaires</legend>
             <div id="showComments">';
-            require('models/bdd.php');;
+            require('../../models/bdd.php');
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
-            
-            $lastComments = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT 0,5');
+            $lastComments = $bdd->query('SELECT * FROM comments WHERE is_signaled = 1 ORDER BY id DESC LIMIT 0,10');
             while($donnees = $lastComments->fetch()){
-                echo '<hr/><p>  <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/> ' . htmlspecialchars($donnees['comment']) . '<hr width=20/><p class="dateComment">' . $donnees['date_comment'] . '</p></p>';
+                echo '<hr/><p>ID: '. htmlspecialchars($donnees['id']) .' -  Pseudo: <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/>Message:<br/><p> ' . htmlspecialchars($donnees['comment']) . '</p><hr width=20/>Date:<br/><p class="dateComment">' . htmlspecialchars($donnees['date_comment']) . '<br/><br/><a href="../../models/delete_signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">Supprimer le commentaire</a> -- <a href="../../models/remove_from_signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">R.A.S</a></p></p>';
             }
     echo '
             </div>
@@ -102,21 +105,7 @@ $content = ob_get_clean();?>
 $comments = ob_get_clean();?>
 
 <?php ob_start();
-    if(isset($_SESSION['pseudo'])){
-        echo '
-            <form method="post">
-                <fieldset>
-                <legend>Poster un commentaire</legend>
-                    <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>
-                    <p id="textareaHint">', $hint ,'</p><br/>
-                    <input type="submit" value="Poster un commentaire" name="creer"/>
-                </fieldset>
-            </form>
-        ';
-    }
-    else{
-        echo '';
-    }
+    echo '';
 $postComment = ob_get_clean();?>
 
 <?php ob_start();
@@ -124,10 +113,10 @@ $postComment = ob_get_clean();?>
         <fieldset>
             <legend>Pages</legend>
             <ul>
-                <li><a href="views/pages/chapitre1.php">Chapitre 1</a></li>
+                <li><a href="">Chapitre 1</a></li>
             </ul>
         </fieldset>
     ';
 $footer = ob_get_clean();?>
 
-<?php require('templates/home.php'); ?>
+<?php require('../../templates/home.php'); ?>

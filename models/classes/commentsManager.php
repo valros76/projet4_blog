@@ -8,11 +8,12 @@ class CommentsManager{
 
     public function add(Comment $comment){
         //Préparation de la requête d'insertion
-        $req = $this->_bdd->prepare('INSERT INTO comments(post_id,author,comment,date_comment) VALUES(:post_id,:author,:comment,CURDATE())');
+        $req = $this->_bdd->prepare('INSERT INTO comments(post_id,author,comment,date_comment, is_signaled) VALUES(:post_id,:author,:comment,CURDATE(), :is_signaled)');
         //Assignation des valeurs
         $req->bindValue(':post_id', $comment->postId());
         $req->bindValue(':author', $comment->author());
         $req->bindValue(':comment', $comment->comment());
+        $req->bindValue(':is_signaled', $comment->is_signaled());
         //Execution de la requête
         $req->execute();
 
@@ -87,12 +88,22 @@ class CommentsManager{
     }
 
     public function update(Comment $comment){
-        $req = $this->_bdd->prepare('UPDATE comments SET post_id = :post_id, author = :author, comment = :comment, date_comment = CURDATE() WHERE id = :id');
+        $req = $this->_bdd->prepare('UPDATE comments SET post_id = :post_id, author = :author, comment = :comment, date_comment = CURDATE(), is_signaled = :is_signaled WHERE id = :id');
     
         $req->bindValue(':post_id', $comment->postId(), PDO::PARAM_INT);
         $req->bindValue(':author', $comment->author(), PDO::PARAM_INT);
         $req->bindValue(':comment', $comment->comment(), PDO::PARAM_INT);
+        $req->bindValue(':is_signaled', $comment->is_signaled(), PDO::PARAM_INT);
         
+        $req->execute();
+    }
+
+    public function unsignaled(Comment $comment){
+        $req = $this->_bdd->prepare('UPDATE comments SET is_signaled = :is_signaled WHERE id = :id');
+
+        $req->bindValue(':is_signaled', $comment->is_signaled(), PDO::PARAM_INT);
+        $req->bindValue(':id', $comment->id(), PDO::PARAM_INT);
+
         $req->execute();
     }
 
