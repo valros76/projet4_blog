@@ -89,7 +89,6 @@ $comments = ob_get_clean();?>
         <form method="post">
             <fieldset>
             <legend>Poster un commentaire</legend>
-                <label for="author">Pseudo</label><input type="text" name="author"/><br/><br/>
                 <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>
                 <p id="textareaHint">Vous pouvez agrandir la boite de message.</p><br/>
                 <input type="submit" value="Poster un commentaire" name="creer"/>
