@@ -74,6 +74,7 @@ class GroupsManager{
         $req = $this->_bdd->prepare('UPDATE groups SET name = : name WHERE id = :id');
     
         $req->bindValue(':name', $group->name());
+        $req->bindValue(':id', $group->id(), PDO::PARAM_INT);
         
         $req->execute();
     }
