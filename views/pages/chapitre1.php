@@ -49,6 +49,7 @@
                         <li><a href="../../index.php">Acceuil</a></li>
         ';
         if(isset($_SESSION['pseudo'])){
+            echo    '<li><a href="member_space.php">Mon profil</a></li>';
             echo   '<li><a href="../../models/deconnexion_user.php">Se deconnecter</a></li>';
         }   
         else{             
