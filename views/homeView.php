@@ -3,9 +3,11 @@
     require('models/bdd.php');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
+    $hint = "Vous pouvez agrandir la boite de message.";
+
     $manager = new CommentsManager($bdd);
-    if(isset($_POST['creer']) && isset($_POST['comment'])){
-        if($_POST['comment'] != null){
+    if(isset($_POST['creer']) && isset($_SESSION['pseudo']) && isset($_POST['comment'])){
+        if($_SESSION['pseudo'] != null && $_POST['comment'] != null){
             $comment = new Comment([
                 'author' => $_SESSION['pseudo'],
                 'comment' => $_POST['comment']
@@ -13,14 +15,17 @@
             
             if($_SESSION['pseudo'] == null){
                 echo 'Vous n\'êtes pas connecté.';
+                $hint = 'Vous n\'êtes pas connecté.';
                 unset($comment);
             }
             if($_POST['comment'] == null){
                 echo 'Vous n\'avez pas rempli la partie message.';
+                $hint = 'Vous n\'avez pas rempli la partie message.';
                 unset($comment);
             }
             if($manager->exists_comment($comment->comment())){
                 echo 'Vous avez déjà posté ce commentaire.';
+                $hint = 'Vous avez déjà posté ce commentaire.';
                 unset($comment);
             }
             else{
@@ -97,16 +102,21 @@ $content = ob_get_clean();?>
 $comments = ob_get_clean();?>
 
 <?php ob_start();
-    echo '
-        <form method="post">
-            <fieldset>
-            <legend>Poster un commentaire</legend>
-                <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>
-                <p id="textareaHint">Vous pouvez agrandir la boite de message.</p><br/>
-                <input type="submit" value="Poster un commentaire" name="creer"/>
-            </fieldset>
-        </form>
-    ';
+    if(isset($_SESSION['pseudo'])){
+        echo '
+            <form method="post">
+                <fieldset>
+                <legend>Poster un commentaire</legend>
+                    <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>
+                    <p id="textareaHint">', $hint ,'</p><br/>
+                    <input type="submit" value="Poster un commentaire" name="creer"/>
+                </fieldset>
+            </form>
+        ';
+    }
+    else{
+        echo '';
+    }
 $postComment = ob_get_clean();?>
 
 <?php ob_start();
