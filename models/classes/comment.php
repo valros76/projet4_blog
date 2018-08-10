@@ -6,6 +6,7 @@ class Comment extends CommentsManager{
     protected $_author;
     protected $_comment;
     protected $_date_comment;
+    protected $_is_signaled = 0;
     
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -40,6 +41,10 @@ class Comment extends CommentsManager{
         return $this->date_comment;
     }
 
+    public function is_signaled(){
+        return $this->_is_signaled;
+    }
+
     public function setId($id){
         $id = (int) $id;
         if(is_int($id)){
@@ -67,6 +72,13 @@ class Comment extends CommentsManager{
 
     public function setDateComment($dateComment){
         $this->_date_comment = $dateComment;
+    }
+
+    public function setIs_signaled($is_signaled){
+        $is_signaled = (int) $is_signaled;
+        if(is_int($is_signaled)){
+            $this->_is_signaled = $is_signaled;
+        }
     }
 
 
