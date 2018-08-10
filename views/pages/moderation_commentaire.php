@@ -97,7 +97,7 @@ $content = ob_get_clean();?>
             
             $lastComments = $bdd->query('SELECT * FROM comments WHERE is_signaled = 1 ORDER BY id DESC LIMIT 0,10');
             while($donnees = $lastComments->fetch()){
-                echo '<hr/><p>ID: '. htmlspecialchars($donnees['id']) .' -  Pseudo: <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/>Message:<br/><p> ' . htmlspecialchars($donnees['comment']) . '</p><hr width=20/>Date:<br/><p class="dateComment">' . $donnees['date_comment'] . '<br/><br/><a href="../../models/delete_signaled_comment.php?id='. $donnees['id'] .'">Supprimer le commentaire</a> -- <a href="">R.A.S</a></p></p>';
+                echo '<hr/><p>ID: '. htmlspecialchars($donnees['id']) .' -  Pseudo: <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/>Message:<br/><p> ' . htmlspecialchars($donnees['comment']) . '</p><hr width=20/>Date:<br/><p class="dateComment">' . htmlspecialchars($donnees['date_comment']) . '<br/><br/><a href="../../models/delete_signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">Supprimer le commentaire</a> -- <a href="../../models/remove_from_signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">R.A.S</a></p></p>';
             }
     echo '
             </div>
