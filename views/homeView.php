@@ -3,15 +3,15 @@
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
     $manager = new CommentsManager($bdd);
-    if(isset($_POST['creer']) && isset($_POST['author']) && isset($_POST['comment'])){
-        if($_POST['author'] != null && $_POST['comment'] != null){
+    if(isset($_POST['creer']) && isset($_POST['comment'])){
+        if($_POST['comment'] != null){
             $comment = new Comment([
-                'author' => $_POST['author'],
+                'author' => $_SESSION['pseudo'],
                 'comment' => $_POST['comment']
             ]);
             
-            if($_POST['author'] == null){
-                echo 'Vous n\'avez pas rempli la partie pseudo.';
+            if($_SESSION['pseudo'] == null){
+                echo 'Vous n\'êtes pas connecté.';
                 unset($comment);
             }
             if($_POST['comment'] == null){
