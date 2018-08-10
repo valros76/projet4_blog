@@ -4,15 +4,15 @@
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
     $manager = new CommentsManager($bdd);
-    if(isset($_POST['creer']) && isset($_POST['author']) && isset($_POST['comment'])){
-        if($_POST['author'] != null && $_POST['comment'] != null){
+    if(isset($_POST['creer']) && isset($_POST['comment'])){
+        if($_POST['comment'] != null){
             $comment = new Comment([
-                'author' => $_POST['author'],
+                'author' => $_SESSION['pseudo'],
                 'comment' => $_POST['comment']
             ]);
             
-            if($_POST['author'] == null){
-                echo 'Vous n\'avez pas rempli la partie pseudo.';
+            if($_SESSION['pseudo'] == null){
+                echo 'Vous n\'êtes pas connecté.';
                 unset($comment);
             }
             if($_POST['comment'] == null){
@@ -101,7 +101,6 @@ $comments = ob_get_clean();?>
         <form method="post">
             <fieldset>
             <legend>Poster un commentaire</legend>
-                <label for="author">Pseudo</label><input type="text" name="author"/><br/><br/>
                 <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>
                 <p id="textareaHint">Vous pouvez agrandir la boite de message.</p><br/>
                 <input type="submit" value="Poster un commentaire" name="creer"/>
