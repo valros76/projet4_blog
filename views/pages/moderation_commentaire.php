@@ -95,9 +95,9 @@ $content = ob_get_clean();?>
             require('../../models/bdd.php');
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
-            $lastComments = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT 0,5');
+            $lastComments = $bdd->query('SELECT * FROM comments WHERE is_signaled = 1 ORDER BY id DESC LIMIT 0,10');
             while($donnees = $lastComments->fetch()){
-                echo '<hr/><p>  <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/> ' . htmlspecialchars($donnees['comment']) . '<hr width=20/><p class="dateComment">' . $donnees['date_comment'] . '</p></p>';
+                echo '<hr/><p>ID: '. htmlspecialchars($donnees['id']) .' -  Pseudo: <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/>Message:<br/><p> ' . htmlspecialchars($donnees['comment']) . '</p><hr width=20/>Date:<br/><p class="dateComment">' . $donnees['date_comment'] . '<br/><br/><a href="../../models/delete_signaled_comment.php?id='. $donnees['id'] .'">Supprimer le commentaire</a> -- <a href="">R.A.S</a></p></p>';
             }
     echo '
             </div>
@@ -105,21 +105,7 @@ $content = ob_get_clean();?>
 $comments = ob_get_clean();?>
 
 <?php ob_start();
-   if(isset($_SESSION['pseudo'])){
-    echo '
-        <form method="post">
-            <fieldset>
-            <legend>Poster un commentaire</legend>
-                <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>
-                <p id="textareaHint">', $hint ,'</p><br/>
-                <input type="submit" value="Poster un commentaire" name="creer"/>
-            </fieldset>
-        </form>
-    ';
-}
-else{
     echo '';
-}
 $postComment = ob_get_clean();?>
 
 <?php ob_start();
