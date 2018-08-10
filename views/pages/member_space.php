@@ -7,7 +7,7 @@
     spl_autoload_register('loadClass');
     require('../../models/bdd.php');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-    
+
     $manager = new UsersManager($bdd);
     $profile = $manager->get($_SESSION['pseudo']);
     
@@ -50,10 +50,10 @@ $header = ob_get_clean();?>
     </h3>
     <div class="texteProfil">
         <fieldset>
-            <p><b>Nom</b>  <br/><br/>{', $profile->pseudo() ,'}</p>
-            <p><b>Email</b> <br/><br/>{', $profile->email() ,'}</p>
-            <p><b>Date d\'inscription</b> <br/><br/>{', $profile->inscription_date() ,'}</p>
-            <p><b>Rang</b> <br/><br/>{', $profile->id_group() ,', <i>', $profile->group_name() ,'</i>}</p>
+                <p><b>Nom</b>  <br/><br/>{', $profile->pseudo() ,'}</p>
+                <p><b>Email</b> <br/><br/>{', $profile->email() ,'}</p>
+                <p><b>Date d\'inscription</b> <br/><br/>{', $profile->inscription_date() ,'}</p>
+                <p><b>Rôle</b> <br/><br/>{', $profile->id_group() ,', <i>', $profile->group_name() ,'</i>}</p>
         </fieldset>
     </div>
 </article>';
