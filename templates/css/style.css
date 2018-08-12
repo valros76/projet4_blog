@@ -88,6 +88,13 @@ body{
     box-sizing:content-box;
 }
 
+#texteArticle{
+    width:100%;
+    margin:20px 0;
+    padding:0;
+    box-sizing:content-box;
+}
+
 #contentHome fieldset{
     display:inline-block;
     width:40%;
@@ -96,12 +103,7 @@ body{
     background-color:rgb(150,150,150);
 }
 
-#contentHome #createPost{
-    width:100%;
-    margin:0;
-    padding:0;
-    box-sizing:content-box;
-}
+
 
 #contentHome fieldset legend{
     color:rgb(25,25,25);
@@ -113,6 +115,14 @@ body{
 
 #contentHome form label{
     display:block;
+}
+
+#contentHome #createPost{
+    width:100%;
+    margin:0;
+    padding:0;
+    box-sizing:content-box;
+    position:relative;
 }
 
 #comments{

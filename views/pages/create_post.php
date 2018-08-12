@@ -32,7 +32,7 @@
             <fieldset>
                 <legend>Menu</legend>
                     <ul id="navHome">
-                        <li><a href="">Acceuil</a></li>
+                        <li><a href="../../index.php">Acceuil</a></li>
         ';
         if(isset($_SESSION['pseudo'])){
             echo    '<li><a href="../../views/pages/member_space.php">Mon profil</a></li>';
@@ -51,11 +51,11 @@
 $header = ob_get_clean();?>
 
 <?php ob_start();
-    echo '<article>
+    echo '<article id="createArticle">
             <h3>
                 Créer un post
             </h3>
-            <div class="texteDescription">
+            <div class="texteArticle">
                 <p>
                     <fieldset id="createPost">
                         <legend>Créer un post</legend>
@@ -87,7 +87,7 @@ $postComment = ob_get_clean();?>
         <fieldset>
             <legend>Pages</legend>
             <ul>
-                <li><a href="views/pages/chapitre1.php">Chapitre 1</a></li>
+                <li><a href="chapitre1.php">Chapitre 1</a></li>
             </ul>
         </fieldset>
     ';
