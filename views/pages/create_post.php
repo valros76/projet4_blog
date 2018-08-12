@@ -59,11 +59,11 @@ $header = ob_get_clean();?>
                 <p>
                     <fieldset>
                         <legend>Créer un post</legend>
-                        <form method="post">
-                           <label for="titre">Titre</label>
+                        <form action="../../models/create_article.php" method="post">
+                           <label for="titre"><b>Titre</b></label><br/>
                            <input type="text" name="titre"/>
                            <br/><br/>
-                           <label for="contenu">Contenu</label>
+                           <label for="contenu"><b>Contenu</b></label><br/>
                            <textarea class="tinyMCE" name="contenu" cols="30" rows="20"></textarea>
                            <br/><br/>
                            <input type="submit" value="Poster" name="posterContenu"/> 
