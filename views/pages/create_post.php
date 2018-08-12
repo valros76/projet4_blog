@@ -57,7 +57,7 @@ $header = ob_get_clean();?>
             </h3>
             <div class="texteDescription">
                 <p>
-                    <fieldset>
+                    <fieldset id="createPost">
                         <legend>Créer un post</legend>
                         <form action="../../models/create_article.php" method="post">
                            <label for="title"><b>Titre</b></label><br/>

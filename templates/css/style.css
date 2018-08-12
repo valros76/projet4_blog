@@ -83,7 +83,9 @@ body{
 #contentHome{
     width:50%;
     margin:20px auto;
+    padding:0;
     background:linear-gradient(to right, rgb(220,220,220), rgb(190,190,190) 25%);
+    box-sizing:content-box;
 }
 
 #contentHome fieldset{
@@ -92,6 +94,13 @@ body{
     line-height:15px;
     margin:10px auto;
     background-color:rgb(150,150,150);
+}
+
+#contentHome #createPost{
+    width:100%;
+    margin:0;
+    padding:0;
+    box-sizing:content-box;
 }
 
 #contentHome fieldset legend{
