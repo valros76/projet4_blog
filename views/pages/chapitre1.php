@@ -71,14 +71,14 @@ $header = ob_get_clean();?>
 
 <?php ob_start();
     echo '<article>
-            <h3>
+            <h2>
                 Tous les articles
-            </h3>
+            </h2>
             <div class="texteDescription">
                 <p>';
                     $lastPosts = $bdd->query('SELECT * FROM posts ORDER BY id DESC LIMIT 0,3');
                     while($donnees = $lastPosts->fetch()){
-                        echo '<header><h2>'. htmlspecialchars($donnees['title']) .'</h2></header><hr/><br/><section>'. $donnees['content'] .'</section><br/><hr/><footer><p>'. $donnees['date'] .'</p></footer>';
+                        echo '<header><h3>'. htmlspecialchars($donnees['title']) .'</h3></header><hr/><br/><section>'. $donnees['content'] .'</section><br/><hr/><footer><p>'. $donnees['date'] .'</p></footer>';
                     }
             echo '</p>
             </div>
