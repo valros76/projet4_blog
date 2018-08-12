@@ -1,7 +1,3 @@
-<?php 
-require('../../models/bdd.php');
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,6 +6,13 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?= $locateCss; ?>"/>
     <title><?= $title; ?></title>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=aodwpl4fidsfjdc4lsy7dwdfx22id12dxjh7t7s5vietisvy"></script>
+    <script>tinymce.init({ 
+        selector:'textarea',
+        themes:'advanced',
+        width:'300',
+        height:'600'
+         });</script>
 </head>
 <body>
     <div id="containerHome">
