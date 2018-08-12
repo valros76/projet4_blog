@@ -60,13 +60,13 @@ $header = ob_get_clean();?>
                     <fieldset>
                         <legend>Créer un post</legend>
                         <form action="../../models/create_article.php" method="post">
-                           <label for="titre"><b>Titre</b></label><br/>
-                           <input type="text" name="titre"/>
+                           <label for="title"><b>Titre</b></label><br/>
+                           <input type="text" name="title"/>
                            <br/><br/>
-                           <label for="contenu"><b>Contenu</b></label><br/>
-                           <textarea class="tinyMCE" name="contenu" cols="30" rows="20"></textarea>
+                           <label for="content"><b>Contenu</b></label><br/>
+                           <textarea class="tinyMCE" name="content" cols="30" rows="20"></textarea>
                            <br/><br/>
-                           <input type="submit" value="Poster" name="posterContenu"/> 
+                           <input type="submit" value="Poster" name="postContent"/> 
                         </form>
                     </fieldset>
                 </p>

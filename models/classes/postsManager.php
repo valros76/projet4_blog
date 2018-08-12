@@ -12,7 +12,7 @@ class PostsManager{
         $req = $this->_bdd->prepare('INSERT INTO posts(title,content,date) VALUES(:title,:content,CURDATE())');
         //Assignation des valeurs
         $req->bindValue(':title', $post->title());
-        $req->bindValue(':content', $content->content());
+        $req->bindValue(':content', $post->content());
         //Execution de la requête
         $req->execute();
 
