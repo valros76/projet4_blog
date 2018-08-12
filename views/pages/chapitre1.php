@@ -72,22 +72,15 @@ $header = ob_get_clean();?>
 <?php ob_start();
     echo '<article>
             <h3>
-                Chapitre 1 - Le commencement
+                Tous les articles
             </h3>
             <div class="texteDescription">
-                <p>
-                    Lorem ipsum dolor sit amet.
-                    <br>
-                    <br>
-                    Lorem ipsum dolor sit amet.
-                    <br>
-                    <br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Modi molestias nemo neque eos, vitae quia nostrum dignissimos recusandae,
-                    esse est, quo asperiores maxime itaque! 
-                    Adipisci quam id ipsa necessitatibus est magni sapiente numquam, 
-                    nam praesentium similique placeat incidunt fugit hic.
-                </p>
+                <p>';
+                    $lastPosts = $bdd->query('SELECT * FROM posts ORDER BY id DESC LIMIT 0,3');
+                    while($donnees = $lastPosts->fetch()){
+                        echo '<header><h2>'. htmlspecialchars($donnees['title']) .'</h2></header><hr/><br/><section>'. $donnees['content'] .'</section><br/><hr/><footer><p>'. $donnees['date'] .'</p></footer>';
+                    }
+            echo '</p>
             </div>
         </article>';
 $content = ob_get_clean();?>

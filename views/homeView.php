@@ -51,7 +51,7 @@
         if(isset($_SESSION['pseudo'])){
             echo    '<li><a href="views/pages/member_space.php">Mon profil</a></li>';
             echo   '<li><a href="models/deconnexion_user.php">Se deconnecter</a></li>';
-        }   
+        } 
         else{             
             echo   '
                     <li><a href="views/pages/inscription.php">S\'inscrire</a></li>
