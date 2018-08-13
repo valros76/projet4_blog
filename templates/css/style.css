@@ -81,7 +81,7 @@ body{
 }
 
 #contentHome{
-    width:50%;
+    width:60%;
     margin:20px auto;
     padding:0;
     background:linear-gradient(to right, rgb(220,220,220), rgb(190,190,190) 25%);
@@ -98,6 +98,7 @@ body{
 #contentHome fieldset{
     display:inline-block;
     width:40%;
+    position:relative;
     line-height:15px;
     margin:10px auto;
     background-color:rgb(150,150,150);
@@ -118,7 +119,7 @@ body{
 }
 
 #contentHome #createPost{
-    width:100%;
+    width:80%;
     margin:0;
     padding:0;
     box-sizing:content-box;
