@@ -126,6 +126,18 @@ body{
     position:relative;
 }
 
+#postContent{
+    background:linear-gradient(to top, rgba(11, 71, 99, 0.4) 25%, rgba(29, 53, 90,0.8) 75%);
+    padding:3px;
+}
+
+#postContent h3,
+#postContent footer{
+    background-color:rgba(255,255,255,0.1);
+}
+
+
+
 #comments{
     display:block;
     width:100%;
