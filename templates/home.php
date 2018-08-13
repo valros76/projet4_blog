@@ -10,7 +10,7 @@
     <script>tinymce.init({ 
         selector:'textarea',
         themes:'advanced',
-        width:'100%',
+        width:'99.6%',
         height:'auto'
          });</script>
 </head>
