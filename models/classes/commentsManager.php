@@ -98,6 +98,15 @@ class CommentsManager{
         $req->execute();
     }
 
+    public function signaled(Comment $comment){
+        $req = $this->_bdd->prepare('UPDATE comments SET is_signaled = :is_signaled WHERE id = :id');
+
+        $req->bindValue(':is_signaled', $comment->signaled(), PDO::PARAM_INT);
+        $req->bindValue(':id', $comment->id(), PDO::PARAM_INT);
+
+        $req->execute();
+    }
+
     public function unsignaled(Comment $comment){
         $req = $this->_bdd->prepare('UPDATE comments SET is_signaled = :is_signaled WHERE id = :id');
 

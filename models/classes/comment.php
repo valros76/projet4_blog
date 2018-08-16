@@ -45,6 +45,10 @@ class Comment extends CommentsManager{
         return $this->_is_signaled;
     }
 
+    public function signaled(){
+        return $this->is_signaled += 1;
+    }
+
     public function setId($id){
         $id = (int) $id;
         if(is_int($id)){
