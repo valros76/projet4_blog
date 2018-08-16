@@ -28,7 +28,10 @@
                         <li><a href="../../index.php">Acceuil</a></li>
         ';
         if(isset($_SESSION['pseudo'])){
-            echo    '<li><a href="member_space.php">Mon profil</a></li>';
+            if($_SESSION['id_group'] == 3){
+                echo '<li><a href="create_post.php">Créer un article</a></li>';
+                echo '<li><a href="moderation_commentaire.php">Modérer les commentaires</a></li>';
+            }
             echo   '<li><a href="../../models/deconnexion_user.php">Se deconnecter</a></li>';
         }   
         else{             

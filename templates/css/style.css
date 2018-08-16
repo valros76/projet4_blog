@@ -1,7 +1,7 @@
 body{
     text-align:center;
     word-wrap:break-word;
-    background-image:url('https://pixabay.com/get/ea31b70620f5013ed1534705fb094f9ee273e1d41dac104496f4c071a2eebcbe/road-3469810_1920.jpg');
+    background-image:url('../../img/back001.jpg');
     background-repeat:repeat;
     background-color:rgba(180,180,180,0.6);
 }
@@ -38,10 +38,9 @@ body{
 
 #headHome fieldset{
     display:inline-block;
-    width:40%;
+    width:80%;
     margin:0 auto;
     background-color:rgb(150,150,150);
-    height:40px;
     border-radius:7.5%;
 }
 
@@ -56,7 +55,7 @@ body{
     font-weight:bold;
 }
 
-#headHome ul{
+#navHome{
     display:flex;
     flex-direction:row;
     justify-content:space-around;
@@ -64,19 +63,22 @@ body{
     list-style:none;
     padding-left:0;
     margin:auto;
+    width:100%;
 }
 
-#headHome li{
-    width:30%;
+#navHome li{
+    width:40%;
+    font-size:0.8em;
+    padding-right:10px;
 }
 
-#headHome li a{
+#navHome li a{
     color:rgba(255,255,255,0.6);
     text-decoration:none;
     text-transform:uppercase;
 }
 
-#headHome li a:hover{
+#navHome li a:hover{
     text-decoration:underline;
 }
 
