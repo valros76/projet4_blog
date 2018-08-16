@@ -36,17 +36,7 @@
             <?= $footer; ?>
         </footer>
     </div>
-    <?php
-    if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] != null){
-        $manager = new UsersManager($bdd);
-        $admin = $manager->get($_SESSION['pseudo']);
-            if($admin->id_group() != 3){
-                echo '<script src="js/jquery.min.js"></script>';
-                echo "<script src=\"js/tinymce/tinymce.min.js\"></script>";
-                echo "<script src=\"js/tinyInit.js\"></script>";
-            }
-    }
-    ?>
+    
     
 </body>
 </html>

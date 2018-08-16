@@ -90,7 +90,7 @@ $postComment = ob_get_clean();?>
         <fieldset>
             <legend>Pages</legend>
             <ul>
-                <li><a href="chapitre1.php">Chapitre 1</a></li>
+                <li><a href="latest_posts.php">Derniers posts</a></li>
             </ul>
         </fieldset>
     ';

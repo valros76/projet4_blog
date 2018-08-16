@@ -98,7 +98,7 @@ $content = ob_get_clean();?>
             require('../../models/bdd.php');
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
-            $lastComments = $bdd->query('SELECT * FROM comments WHERE is_signaled = 1 ORDER BY id DESC LIMIT 0,10');
+            $lastComments = $bdd->query('SELECT * FROM comments WHERE is_signaled = 1 ORDER BY id DESC LIMIT 0,50');
             while($donnees = $lastComments->fetch()){
                 echo '<hr/><p>ID: '. htmlspecialchars($donnees['id']) .' -  Pseudo: <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/>Message:<br/><p> ' . htmlspecialchars($donnees['comment']) . '</p><hr width=20/>Date:<br/><p class="dateComment">' . htmlspecialchars($donnees['date_comment']) . '<br/><br/><a href="../../models/delete_signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">Supprimer le commentaire</a> -- <a href="../../models/remove_from_signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">R.A.S</a></p></p>';
             }
@@ -116,7 +116,7 @@ $postComment = ob_get_clean();?>
         <fieldset>
             <legend>Pages</legend>
             <ul>
-                <li><a href="chapitre1.php">Chapitre 1</a></li>
+                <li><a href="latest_posts.php">Derniers posts</a></li>
             </ul>
         </fieldset>
     ';
