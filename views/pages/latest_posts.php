@@ -99,7 +99,17 @@ $content = ob_get_clean();?>
             
             $lastComments = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT 0,5');
             while($donnees = $lastComments->fetch()){
-                echo '<hr/><p>  <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="20"/> ' . htmlspecialchars($donnees['comment']) . '<hr width=20/><p class="dateComment">' . $donnees['date_comment'] . '</p></p>';
+                echo '<hr/><p>ID: '. htmlspecialchars($donnees['id']) .' - <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="50"/><p>' . $donnees['comment'] . '</p><hr width=50/><p class="dateComment">Date: ' . htmlspecialchars($donnees['date_comment']) . '<br/><br/>';
+                if(isset($_SESSION['pseudo'])){
+                    if($_SESSION['id_group'] >= 1){    
+                        echo '<a href="models/signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">Signaler le commentaire</a>';
+                            if($_SESSION['id_group'] == 3){
+                                echo ' -- <a href="models/delete_signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">Supprimer le commentaire</a>';
+                            }
+                    }
+                }
+                else{}
+                echo '</p></p>';
             }
     echo '
             </div>

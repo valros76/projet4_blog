@@ -14,6 +14,6 @@ spl_autoload_register('loadClass');
     $manager = new CommentsManager($bdd);
     $manager->delete($comment);
 
-    header('Location: ../views/pages/moderation_commentaire.php');
+    header('Location:javascript://history.go(-1)');
 
 ?>
