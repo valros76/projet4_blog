@@ -11,6 +11,12 @@ spl_autoload_register('loadClass');
     $req->execute(array(
         'pseudo' => $pseudo));
     $resultat = $req->fetch(PDO::FETCH_ASSOC);
+    $req->closeCursor();
+    $id = $bdd->prepare('SELECT id_group FROM users WHERE pseudo = :pseudo');
+    $id->execute(array(
+        'pseudo' => $pseudo));
+    $id_group = $id->fetch(PDO::FETCH_ASSOC);
+    $id->closeCursor();
 
     $isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
 
@@ -22,6 +28,7 @@ spl_autoload_register('loadClass');
             session_start();
             $_SESSION['id'] = $resultat['id'];
             $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['id_group'] = $id_group['id_group'];
             echo 'Vous êtes connecté !';
         }
         else{
