@@ -12,7 +12,7 @@ spl_autoload_register('loadClass');
     ]);
 
     $manager = new CommentsManager($bdd);
-    $manager->signaled($comment);
+    $manager->can_signaled($comment);
 
     header('Location:javascript://history.go(-1)');
 
