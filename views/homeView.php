@@ -88,31 +88,7 @@ $header = ob_get_clean();?>
 $content = ob_get_clean();?>
 
 <?php ob_start();
-    echo '
-        <fieldset id="blocComments">
-            <legend>Commentaires</legend>
-            <div id="showComments">';
-            require('models/bdd.php');;
-            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            
-            
-            $lastComments = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT 0,5');
-            while($donnees = $lastComments->fetch()){
-                echo '<hr/><p>ID: '. htmlspecialchars($donnees['id']) .' - <span id="author">' . htmlspecialchars($donnees['author']) . '</span> <hr width="50"/><p>' . $donnees['comment'] . '</p><hr width=50/><p class="dateComment">Date: ' . htmlspecialchars($donnees['date_comment']) . '<br/><br/>';
-                if(isset($_SESSION['pseudo'])){
-                    if($_SESSION['id_group'] == 1 OR $_SESSION['id_group'] == 2){    
-                        echo '<a href="models/signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">Signaler le commentaire</a>';     
-                    }
-                    if($_SESSION['id_group'] == 3){
-                        echo '<a href="models/delete_signaled_comment.php?id='. htmlspecialchars($donnees['id']) .'">Supprimer le commentaire</a>';
-                    }
-                }
-                else{}
-                echo '</p></p>';
-            }
-    echo '
-            </div>
-        </fieldset>';
+    echo '';
 $comments = ob_get_clean();?>
 
 <?php ob_start();
