@@ -92,21 +92,7 @@ $content = ob_get_clean();?>
 $comments = ob_get_clean();?>
 
 <?php ob_start();
-    if(isset($_SESSION['pseudo'])){
-        echo '
-            <form method="post">
-                <fieldset>
-                <legend>Poster un commentaire</legend>
-                    <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>
-                    <p id="textareaHint">', $hint ,'</p><br/>
-                    <input type="submit" value="Poster un commentaire" name="creer"/>
-                </fieldset>
-            </form>
-        ';
-    }
-    else{
         echo '';
-    }
 $postComment = ob_get_clean();?>
 
 <?php ob_start();
