@@ -82,7 +82,7 @@ $header = ob_get_clean();?>
                 <p>';
                     $lastPosts = $bdd->query('SELECT * FROM posts ORDER BY id DESC LIMIT 0,3');
                     while($donnees = $lastPosts->fetch()){
-                        echo '<div id="postContent"><header><h3>'. htmlspecialchars($donnees['title']) .'</h3></header><hr/><br/><section>'. $donnees['content'] .'</section><br/><hr/><footer><p>'. $donnees['date'] .'</p><p><a href="post_with_commentary.php?post_id="'. $donnees['id'] .'>[Commentaires]</a></p></footer></div><br/><br/>';
+                        echo '<div id="postContent"><header><h3>'. htmlspecialchars($donnees['title']) .'</h3></header><hr/><br/><section>'. $donnees['content'] .'</section><br/><hr/><footer><p>'. $donnees['date'] .'</p><p><a href="post_with_commentary.php?post_id='. $donnees['id'] .'">[Commentaires]</a></p></footer></div><br/><br/>';
                     }
             echo '</p>
             </div>
