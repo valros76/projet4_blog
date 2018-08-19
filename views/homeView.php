@@ -46,7 +46,6 @@
             <fieldset>
                 <legend>Menu</legend>
                     <ul id="navHome">
-                        <li><a href="">Acceuil</a></li>
         ';
         if(isset($_SESSION['pseudo'])){
             echo    '<li><a href="views/pages/member_space.php">Mon profil</a></li>';
