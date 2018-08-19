@@ -119,7 +119,7 @@ $comments = ob_get_clean();?>
 <?php ob_start();
    if(isset($_SESSION['pseudo'])){
     echo '
-        <form method="post">
+        <form method="post" >
             <fieldset>
             <legend>Poster un commentaire</legend>
                 <label for="comment">Message</label><textarea row="5" cols="50" name="comment"></textarea><br/>

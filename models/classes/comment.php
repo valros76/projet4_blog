@@ -27,7 +27,8 @@ class Comment extends CommentsManager{
     }
 
     public function postId(){
-        return $this->_post_id;
+        $post_id = $_GET['post_id'];
+        return $this->_post_id += $post_id;
     }
 
     public function author(){

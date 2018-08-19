@@ -19,7 +19,7 @@ class CommentsManager{
 
         // Hydratation du personnage passé en paramètre avec assignation de son identifiant et des dégâts initiaux (= 0).
         $comment->hydrate([
-            'id' => $this->_bdd->lastInsertId(),
+            'id' => $this->_bdd->lastInsertId()
         ]);
     }
 
