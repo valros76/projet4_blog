@@ -48,7 +48,7 @@ class Comment extends CommentsManager{
     }
 
     public function signaled(){
-        return $this->signaled += 1;
+        return $this->signaled = 1;
     }
 
     public function setId($id){

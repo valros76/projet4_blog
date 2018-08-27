@@ -14,6 +14,6 @@ spl_autoload_register('loadClass');
     $manager = new CommentsManager($bdd);
     $manager->delete($comment);
 
-    header('Location:javascript://history.go(-1)');
+    header('Location:../views/pages/latest_posts.php');
 
 ?>
