@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="<?= $locateCss; ?>"/>
+    <link rel="stylesheet" href="templates/css/style.css"/>
     <title><?= $title; ?></title>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=aodwpl4fidsfjdc4lsy7dwdfx22id12dxjh7t7s5vietisvy"></script>
     <script>tinymce.init({ 

@@ -1,9 +1,5 @@
 <?php
-    function loadClass($class){
-        require 'classes/'.$class.'.php';
-    }
-    spl_autoload_register('loadClass');
-    require('bdd.php');
+    $bdd = dbConnect();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         if($_POST['title'] != null && $_POST['content'] != null){
 
@@ -16,5 +12,5 @@
             $manager->add($post);
         }
         
-    header('Location:../index.php');
+    header('Location:?action=latest_posts');
 ?>

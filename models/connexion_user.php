@@ -1,11 +1,7 @@
 <?php
-function loadClass($class){
-    require 'classes/'.$class.'.php';
-}
-spl_autoload_register('loadClass');
 
     $pseudo = $_POST['pseudo'];
-    $bdd = new PDO('mysql:host=localhost;dbname=id6846891_blog_ecrivain;charset=utf8', 'id6846891_valros76', 'granpeper4');
+    $bdd = dbConnect();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     $req = $bdd->prepare('SELECT id,password FROM users WHERE pseudo = :pseudo');
     $req->execute(array(
@@ -29,11 +25,11 @@ spl_autoload_register('loadClass');
             $_SESSION['id'] = $resultat['id'];
             $_SESSION['pseudo'] = $pseudo;
             $_SESSION['id_group'] = $id_group['id_group'];
-            header('Location: ../index.php');
+            header('Location:index.php');
             echo 'Vous êtes connecté !';
         }
         else{
-            header('Location: ../index.php');
+            header('Location:?action=home');
             echo 'Mauvais identifiant ou mot de passe.';
         }
     }

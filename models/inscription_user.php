@@ -1,9 +1,5 @@
 <?php
-function loadClass($class){
-    require 'classes/'.$class.'.php';
-}
 
-spl_autoload_register('loadClass');
 
     if($_POST['pseudo'] != null && $_POST['password'] != null && $_POST['confirmPassword'] && $_POST['email'] != null){
         $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -14,7 +10,7 @@ spl_autoload_register('loadClass');
             'email' => $_POST['email']
         ]);
         
-        require('bdd.php');
+        $bdd = dbConnect();
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
         $manager = new UsersManager($bdd);
@@ -44,6 +40,6 @@ spl_autoload_register('loadClass');
     }
 
 
-header('Location: ../views/pages/connexion.php');
+header('Location:?action=connexion');
 
 ?>

@@ -1,7 +1,6 @@
 
 <?php
-$title="Connexion à l'espace membre";
-$locateCss="../../templates/css/style.css";
+$title="Inscription";
 ?>
 
 <?php ob_start();
@@ -18,7 +17,7 @@ echo '
 $header = ob_get_clean();?>
 
 <?php ob_start();
-echo '<form action="../../models/inscription_user.php" method="post">
+echo '<form action="?action=new_inscription" method="post">
         <fieldset>
             <legend>Inscription</legend>
             <label for="pseudo">Pseudo</label><input type="text" name="pseudo"/><br/>
@@ -43,10 +42,10 @@ echo '
     <fieldset>
         <legend>Inscription</legend>
         <ul>
-            <li><a href="connexion.php">Se connecter</a></li>
+            <li><a href="?action=connexion">Se connecter</a></li>
         </ul>
     </fieldset>
 ';
 $footer = ob_get_clean();?>
 
-<?php require('../../templates/home.php'); ?>
+<?php require('templates/home.php'); ?>

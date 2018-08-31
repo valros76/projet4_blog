@@ -1,43 +1,6 @@
-<?php
-    session_start();
-    require('models/bdd.php');
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
-    $hint = "Vous pouvez agrandir la boite de message.";
-
-    $manager = new CommentsManager($bdd);
-    if(isset($_POST['creer']) && isset($_SESSION['pseudo']) && isset($_POST['comment'])){
-        if($_SESSION['pseudo'] != null && $_POST['comment'] != null){
-            $comment = new Comment([
-                'author' => $_SESSION['pseudo'],
-                'comment' => $_POST['comment']
-            ]);
-            
-            if($_SESSION['pseudo'] == null){
-                echo 'Vous n\'êtes pas connecté.';
-                $hint = 'Vous n\'êtes pas connecté.';
-                unset($comment);
-            }
-            if($_POST['comment'] == null){
-                echo 'Vous n\'avez pas rempli la partie message.';
-                $hint = 'Vous n\'avez pas rempli la partie message.';
-                unset($comment);
-            }
-            if($manager->exists_comment($comment->comment())){
-                echo 'Vous avez déjà posté ce commentaire.';
-                $hint = 'Vous avez déjà posté ce commentaire.';
-                unset($comment);
-            }
-            else{
-                $manager->add($comment);
-            }
-        }
-    }
-?>
 
 <?php
     $title="Acceuil";
-    $locateCss="templates/css/style.css";
 ?>
 
 <?php ob_start();
@@ -48,17 +11,17 @@
                     <ul id="navHome">
         ';
         if(isset($_SESSION['pseudo'])){
-            echo    '<li><a href="views/pages/member_space.php">Mon profil</a></li>';
+            echo    '<li><a href="?action=member_space">Mon profil</a></li>';
             if($_SESSION['id_group'] == 3){
-                echo '<li><a href="views/pages/create_post.php">Créer un article</a></li>';
-                echo '<li><a href="views/pages/moderation_commentaire.php">Modérer les commentaires</a></li>';
+                echo '<li><a href="?action=create_post">Créer un article</a></li>';
+                echo '<li><a href="?action=moderation_commentaire">Modérer les commentaires</a></li>';
             }
-            echo   '<li><a href="models/deconnexion_user.php">Se deconnecter</a></li>';
+            echo   '<li><a href="?action=deconnexion">Se deconnecter</a></li>';
         } 
         else{             
-            echo   '
-                    <li><a href="views/pages/inscription.php">S\'inscrire</a></li>
-                    <li><a href="views/pages/connexion.php">Se connecter</a></li>
+            echo  '
+                    <li><a href="?action=inscription">S\'inscrire</a></li>
+                    <li><a href="?action=connexion">Se connecter</a></li>
                 ';
         }
         echo        '
@@ -99,7 +62,7 @@ $postComment = ob_get_clean();?>
         <fieldset>
             <legend>Pages</legend>
             <ul>
-                <li><a href="views/pages/latest_posts.php">Derniers posts</a></li>
+                <li><a href="?action=latest_posts">Derniers posts</a></li>
             </ul>
         </fieldset>
     ';

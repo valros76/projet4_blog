@@ -1,22 +1,14 @@
 <?php
-    session_start();
-    function loadClass($class){
-        require '../../models/classes/'.$class.'.php';
-    }
-    
-    spl_autoload_register('loadClass');
-    require('../../models/bdd.php');
+    $bdd = dbConnect();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
     $manager = new UsersManager($bdd);
     $profile = $manager->get($_SESSION['pseudo']);
     
-    
 ?>
 
 <?php
     $title="Profil membre";
-    $locateCss="../../templates/css/style.css";
 ?>
 
 <?php ob_start();
@@ -25,19 +17,19 @@
             <fieldset>
                 <legend>Menu</legend>
                     <ul id="navHome">
-                        <li><a href="../../index.php">Acceuil</a></li>
+                        <li><a href="?action=home">Acceuil</a></li>
         ';
         if(isset($_SESSION['pseudo'])){
             if($_SESSION['id_group'] == 3){
-                echo '<li><a href="create_post.php">Créer un article</a></li>';
-                echo '<li><a href="moderation_commentaire.php">Modérer les commentaires</a></li>';
+                echo '<li><a href="?action=create_post">Créer un article</a></li>';
+                echo '<li><a href="?action=moderation_commentaire">Modérer les commentaires</a></li>';
             }
-            echo   '<li><a href="../../models/deconnexion_user.php">Se deconnecter</a></li>';
+            echo   '<li><a href="?action=deconnexion">Se deconnecter</a></li>';
         }   
         else{             
             echo   '
-                    <li><a href="inscription.php">S\'inscrire</a></li>
-                    <li><a href="connexion.php">Se connecter</a></li>
+                    <li><a href="?action=inscription">S\'inscrire</a></li>
+                    <li><a href="?action=connexion">Se connecter</a></li>
                 ';
         }
         echo        '
@@ -75,10 +67,10 @@ $postComment = ob_get_clean();?>
         <fieldset>
             <legend>Pages</legend>
             <ul>
-                <li><a href="latest_posts.php">Derniers posts</a></li>
+                <li><a href="?action=latest_posts">Derniers posts</a></li>
             </ul>
         </fieldset>
     ';
 $footer = ob_get_clean();?>
 
-<?php require('../../templates/home.php'); ?>
+<?php require('templates/home.php'); ?>

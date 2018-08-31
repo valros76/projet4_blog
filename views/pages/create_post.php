@@ -1,21 +1,17 @@
 <?php
-    session_start();
-    function loadClass($class){
-        require '../../models/classes/'.$class.'.php';
-    }
-    spl_autoload_register('loadClass');
-    require('../../models/bdd.php');
+    
+    $bdd = dbConnect();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     if($_SESSION['pseudo'] != null){
         $manager = new UsersManager($bdd);
         $admin = $manager->get($_SESSION['pseudo']);
         if($admin->id_group() != 3){
             echo "Cette page est réservée à l'administrateur !";
-            header('Location:../..');
+            header('Location:?action=home');
         }
     }
     else{
-        header('Location:../..');
+        header('Location:?action=home');
     }
 
     
@@ -23,7 +19,6 @@
 
 <?php
     $title="Page de création de contenu";
-    $locateCss="../../templates/css/style.css";
 ?>
 
 <?php ob_start();
@@ -32,19 +27,19 @@
             <fieldset>
                 <legend>Menu</legend>
                     <ul id="navHome">
-                        <li><a href="../../index.php">Acceuil</a></li>
+                        <li><a href="?action=home">Acceuil</a></li>
         ';
         if(isset($_SESSION['pseudo'])){
-            echo    '<li><a href="member_space.php">Mon profil</a></li>';
+            echo    '<li><a href="?action=member_space">Mon profil</a></li>';
             if($_SESSION['id_group'] == 3){
-                echo '<li><a href="moderation_commentaire.php">Modérer les commentaires</a></li>';
+                echo '<li><a href="?action=moderation_commentaire">Modérer les commentaires</a></li>';
             }
-            echo   '<li><a href="../../models/deconnexion_user.php">Se deconnecter</a></li>';
+            echo   '<li><a href="?action=deconnexion">Se deconnecter</a></li>';
         }   
         else{             
             echo   '
-                    <li><a href="inscription.php">S\'inscrire</a></li>
-                    <li><a href="connexion.php">Se connecter</a></li>
+                    <li><a href="?action=inscription">S\'inscrire</a></li>
+                    <li><a href="?action=connexion">Se connecter</a></li>
                 ';
         }
         echo        '
@@ -62,7 +57,7 @@ $header = ob_get_clean();?>
                 <p>
                     <fieldset id="createPost">
                         <legend>Créer un post</legend>
-                        <form action="../../models/create_article.php" method="post">
+                        <form action="?action=create_article" method="post">
                            <label for="title"><b>Titre</b></label><br/>
                            <input type="text" name="title"/>
                            <br/><br/>
@@ -90,10 +85,10 @@ $postComment = ob_get_clean();?>
         <fieldset>
             <legend>Pages</legend>
             <ul>
-                <li><a href="latest_posts.php">Derniers posts</a></li>
+                <li><a href="?action=latest_posts">Derniers posts</a></li>
             </ul>
         </fieldset>
     ';
 $footer = ob_get_clean();?>
 
-<?php require('../../templates/home.php'); ?>
+<?php require('templates/home.php'); ?>

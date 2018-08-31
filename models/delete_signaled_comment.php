@@ -1,10 +1,6 @@
 <?php
-function loadClass($class){
-    require 'classes/'.$class.'.php';
-}
-spl_autoload_register('loadClass');
 
-    require('bdd.php');
+    $bdd = dbConnect();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
     $comment = new Comment([
@@ -14,6 +10,6 @@ spl_autoload_register('loadClass');
     $manager = new CommentsManager($bdd);
     $manager->delete($comment);
 
-    header('Location:../views/pages/latest_posts.php');
+    header('Location:?post_id='. $_GET['post_idu'] .'');
 
 ?>

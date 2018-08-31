@@ -1,10 +1,5 @@
 <?php
-function loadClass($class){
-    require 'classes/'.$class.'.php';
-}
-spl_autoload_register('loadClass');
-
-    require('bdd.php');
+    $bdd = dbConnect();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
     $comment = new Comment([
@@ -14,6 +9,6 @@ spl_autoload_register('loadClass');
     $manager = new CommentsManager($bdd);
     $manager->can_signaled($comment);
 
-header('Location:javascript://history.go(-1)');
+    header('Location:?post_id='. $_GET['post_idu'] .'');
 
 ?>
