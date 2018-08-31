@@ -1,0 +1,5 @@
+#ignorer les fichiers présents dans le dossier de config
+.htaccess
+.htpasswd
+bdd.ini
+chemin.php
