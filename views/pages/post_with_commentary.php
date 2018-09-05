@@ -67,7 +67,7 @@ $content = ob_get_clean();?>
                     echo '<a href="?id='. htmlspecialchars($donnees['id']) .'&post_idu='. $_GET['post_id'] .'">Signaler le commentaire</a>';     
                 }
                 if($_SESSION['id_group'] == 3){
-                    echo '<a href="?id='. htmlspecialchars($donnees['id']) .'&post_idu='. $_GET['post_id'] .'">Signaler le commentaire</a>';
+                    echo '<a href="?id='. htmlspecialchars($donnees['id']) .'&post_idu='. $_GET['post_id'] .'">Supprimer le commentaire</a>';
                 }
             }
             else{}
