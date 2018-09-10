@@ -10,8 +10,8 @@
             <fieldset>
                 <legend>Menu</legend>
                     <ul id="navHome">
-                        <li><a href="index.php">Acceuil</a></li>
-                        <li><a href="inscription.php">S\'inscrire</a></li>
+                        <li><a href="?action=home">Acceuil</a></li>
+                        <li><a href="?action=inscription">S\'inscrire</a></li>
                     </ul>
             </fieldset>
         ';

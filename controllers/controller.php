@@ -48,7 +48,7 @@
         }
     
     
-    header('Location:?action=connexion');
+        header('Location:?action=connexion');
     }
 
     function connexion(){
@@ -58,7 +58,6 @@
     function connect(){
         $pseudo = $_POST['pseudo'];
         $bdd = dbConnect();
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         $req = $bdd->prepare('SELECT id,password FROM users WHERE pseudo = :pseudo');
         $req->execute(array(
             'pseudo' => $pseudo));
@@ -228,21 +227,6 @@
 
     function moderationCommentaire(){
         require('views/pages/moderation_commentaire.php');
-    }
-
-    function dbConnect(){
-        $dbData = parse_ini_file('config/bdd.ini');
-        $host = $dbData['host'];
-        $dbname = $dbData['dbname'];
-        $username = $dbData['username'];
-        $password = $dbData['password'];
-        try{
-            $bdd = new PDO('mysql:host='. $host .';dbname='. $dbname .';charset=utf8', $username, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            return $bdd;
-        }
-        catch(Exeption $e){
-            die('Erreur : ' .$e->getMessage());
-        }
     }
 
 ?>

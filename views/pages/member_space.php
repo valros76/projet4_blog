@@ -1,10 +1,8 @@
 <?php
     $bdd = dbConnect();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
     $manager = new UsersManager($bdd);
     $profile = $manager->get($_SESSION['pseudo']);
-    
 ?>
 
 <?php
